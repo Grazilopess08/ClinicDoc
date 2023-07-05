@@ -1,0 +1,23 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Lista de Tarefas</title> 
+    <link rel="stylesheet" href="/views/style.css">
+    <link rel="icon" type="" href="https://play-lh.googleusercontent.com/pjUulZ-Vdo7qPKxk3IRhnk8SORPlgSydSyYEjm7fGcoXO8wDyYisWXwQqEjMryZ_sqK2=w240-h480-rw"/>
+</head> 
+<body style="font-family: 'Verdana';"> 
+<div style="background-color: #5096ff77;padding: 5vh;margin-left: 40vh;margin-right: 40vh;margin-top: 15vh;" >
+    <h1 style="color: #fff;">Lista de Tarefas</h1> 
+    <ul style="display: block;">
+        <% tarefas.forEach(tarefa => { %> 
+            <li><%= tarefa.titulo %> <%= tarefa.descricao %></li>
+        <% }); %> 
+    </ul> 
+    <form action="/tarefa" method="POST"> 
+        <input type="text" name="title" placeholder="Nova Tarefa"> 
+        <input type="text" name="description" placeholder="Descrição"> 
+        <button type="submit">Adicionar</button> 
+    </form> 
+</div>
+</body> 
+</html>
