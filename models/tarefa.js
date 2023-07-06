@@ -15,6 +15,12 @@ class Tarefa {
             let resp = await Database.query(`INSERT INTO todo_list(titulo, descricao) VALUES('${this.title}', '${this.description}')`);
             this.id = resp.insertid;
         }
+
+        async deletar(){
+            const Database=require('./database');
+            let resp = await Database.query(`DELETE INTO todo_list(titulo, descricao) VALUES('${this.title}', '${this.description}')`);
+            this.id = resp.deletid;
+        }
     } 
     module.exports = Tarefa;
     

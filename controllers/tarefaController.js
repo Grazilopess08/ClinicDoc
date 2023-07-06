@@ -16,7 +16,12 @@ function addTarefa(req, res) {
 } 
 
 async function deleteTarefa(req,res){
-  req.params.id;
+  const { title, description } = req.body; 
+    const tarefa = delete Tarefa(null, title, description); 
+    tarefa.deletar();
+
+  res.redirect('/tarefas'); 
+  //req.params.id;
 }
 
 module.exports = { getTarefas, addTarefa, deleteTarefa };
