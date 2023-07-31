@@ -1,16 +1,9 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-    <title>Lista de Tarefas</title> 
-    <link rel="stylesheet" href="/views/style.css">
-    <link rel="icon" type="" href="https://play-lh.googleusercontent.com/pjUulZ-Vdo7qPKxk3IRhnk8SORPlgSydSyYEjm7fGcoXO8wDyYisWXwQqEjMryZ_sqK2=w240-h480-rw"/>
-</head> 
-<body style="font-family: 'Verdana';"> 
-<div style="background-color: #5096ff77;padding: 2vw;margin-left: 20vw;margin-right: 20vw;margin-top: 5vw;" >
-    <h1 style="color: #fff;padding-left: 5vw;">Lista de Tarefas</h1> 
+
+<div style="background-color: #5096ff77;padding: 2vw;margin-left: 20vw;margin-right: 20vw;margin-top: 1vw;" >
+    <h1 style="color: #fff;padding-left: 5vw;margin-top: 2px;">Lista de Tarefas</h1> 
     <ul style="display: block;">
         <% tarefas.forEach(tarefa => { %> 
-            <p style="color: #fff;list-style: none;margin: 2px;"><%= tarefa.titulo %> <a style="color: #bb1bff;">|</a> <%= tarefa.descricao %> <button type="submit" style="background-color: #f6ff7a;border-radius: 6px;border-color: #fff;color: #7ea400;" action="/tarefa" method="DELETE" >Del</button> <button type="submit" style="background-color: #ff81e8;border-radius: 6px;border-color: #fff;color: #b9009d;">Edit</button> </p>
+            <p style="color: #fff;list-style: none;padding-left: 30px;margin: 4px;"><%= tarefa.titulo %> <a style="color: #bb1bff;">|</a> <%= tarefa.descricao %> <button type="submit" style="background-color: #f6ff7a;border-radius: 6px;border-color: #fff;color: #7ea400;" action="/tarefa" method="DELETE" >Del</button> <button type="submit" style="background-color: #ff81e8;border-radius: 6px;border-color: #fff;color: #b9009d;">Edit</button> </p>
         <% }); %> 
     </ul> 
     <form style="padding-left: 5vw;" action="/tarefa" method="POST"> 
@@ -19,5 +12,4 @@
         <button style="background-color: #ffde8a;border-color:#fff;color: #c28400;border-radius: 5px;margin-top: 5px; padding: 2px;padding-left: 5px;padding-right: 5px;margin-bottom: 10px;" type="submit">Adicionar</button> 
     </form> 
 </div>
-</body> 
-</html>
+
