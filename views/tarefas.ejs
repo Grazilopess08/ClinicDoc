@@ -1,15 +1,43 @@
-
-<div style="background-color: #5096ff77;padding: 2vw;margin-left: 20vw;margin-right: 20vw;margin-top: 1vw;" >
-    <h1 style="color: #fff;padding-left: 5vw;margin-top: 2px;">Lista de Tarefas</h1> 
-    <ul style="display: block;">
-        <% tarefas.forEach(tarefa => { %> 
-            <p style="color: #fff;list-style: none;padding-left: 30px;margin: 4px;"><%= tarefa.titulo %> <a style="color: #bb1bff;">|</a> <%= tarefa.descricao %> <button type="submit" style="background-color: #f6ff7a;border-radius: 6px;border-color: #fff;color: #7ea400;" action="/tarefa" method="DELETE" >Del</button> <button type="submit" style="background-color: #ff81e8;border-radius: 6px;border-color: #fff;color: #b9009d;">Edit</button> </p>
+<h1>⭒ To Do List ⭒</h1>
+<ul>
+    <% tarefas.forEach(tarefa=> { %>
+        <li>
+            <h2>
+                <%= tarefa.titulo %>
+            </h2>
+            <p>
+                <%= tarefa.descricao %>
+            </p>
+            <p>
+                <%= tarefa.status %>
+            </p>
+            <a href="/tarefas/<%= tarefa.idtodo_list %>/editar">Editar</a>
+           <form action="/tarefas/<%= tarefa.idtodo_list %>/excluir" method="POST" style="display: inline;">
+                <button type="submit">Excluir</button>
+            </form>
+            <form action="/tarefas/<%= tarefa.idtodo_list %>/atualizar-status" method="POST" style="display: inline;">
+                <select name="status">
+                    <option value="feita" <%=tarefa.status==='feita' ? 'selected' : '' %>>Feita</option>
+                    <option value="fazendo" <%=tarefa.status==='fazendo' ? 'selected' : '' %>>Fazendo</option>
+                    <option value="à fazer" <%=tarefa.status==='à fazer' ? 'selected' : '' %>>À Fazer</option>
+                </select>
+                <button type="submit">Atualizar Status</button>
+            </form>
+        </li>
         <% }); %> 
-    </ul> 
-    <form style="padding-left: 5vw;" action="/tarefa" method="POST"> 
-        <input style="border-radius: 5px;border-color: #fff;" type="text" name="title" placeholder="Nova Tarefa"> 
-        <input style="border-radius: 5px;border-color: #fff;" type="text" name="description" placeholder="Descrição"> 
-        <button style="background-color: #ffde8a;border-color:#fff;color: #c28400;border-radius: 5px;margin-top: 5px; padding: 2px;padding-left: 5px;padding-right: 5px;margin-bottom: 10px;" type="submit">Adicionar</button> 
-    </form> 
-</div>
+</ul>
 
+
+<form action="/tarefas" method="POST">
+    <input type="text" name="titulo" placeholder="Nova Tarefa" required>
+    <input type="text" name="descricao" placeholder="Descrição" required>
+
+    <form action="/tarefas/<%= tarefas.idtodo_list %>/atualizar-status" method="POST" style="display: inline;">
+        <select name="status">
+            <option value="feita" <%=tarefas.status==='feita' ? 'selected' : '' %>>Feita</option>
+            <option value="fazendo" <%=tarefas.status==='fazendo' ? 'selected' : '' %>>Fazendo</option>
+            <option value="à fazer" <%=tarefas.status==='à fazer' ? 'selected' : '' %>>À Fazer</option>
+        </select>
+        <button type="submit">Adicionar</button>
+    </form>
+</form>

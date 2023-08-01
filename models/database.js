@@ -1,25 +1,19 @@
-async function connect(){
-    if(global.connection && global.connection.state !== 'disconnected')
-        return global.connection;
-  
-    const mysql = require("mysql2/promise");
-    const connection = await mysql.createConnection({
-        host: 'localhost',
-        port:'3306',
-        user:'root',
-        password : '',
-        database: 'list_todo'
-        
-      });
-    console.log("Conectou no MySQL!");
-    global.connection = connection;
-    return connection;
+const mysql = require('mysql2');
+
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'list_todo',
+});
+
+// Conexão com o banco de dados
+connection.connect((err) => {
+  if (err) {
+    console.error('Erro ao conectar ao banco de dados:', err.message);
+    return;
   }
-  
-  async function query(sql){
-    const conn = await connect();
-    const [rows] = await conn.query(sql);
-    return rows;
-  }
-  
-  module.exports={query}
+  console.log('Conexão bem-sucedida ao banco de dados!');
+});
+
+module.exports = connection;
