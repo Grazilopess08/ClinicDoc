@@ -6,6 +6,7 @@ app.use(expressLayouts);
 
 app.set('layout','./layouts/defaut/index')
 const tarefaController = require('./controllers/tarefaController'); 
+const usuarioController = require('./controllers/usuarioController'); 
 /*const loginRouter = require('./login');
 const indexRouter = require('./index');
 const usersRouter = require('./users');*/
@@ -21,6 +22,16 @@ app.use(express.urlencoded({ extended: true }));
 
 //ROTA
 app.get('/',(req,res)=>{res.send('<h1 style="color:#f98;">Tarefas</h1>')});
+
+app.get('/login',(req, res)=>{
+    app.set('layout', './layouts/default/login');
+    usuarioController.login(req, res);
+});
+
+app.post('/login',(res,req)=>{
+    usuarioController.autenticar(req, res);
+})
+
 app.get('/tarefas', tarefaController.getTarefas); 
 //app.get('/tarefas:query', tarefaController.getTarefas);
 app.post('/tarefas', tarefaController.addTarefa); 
