@@ -5,13 +5,13 @@ const expressLayouts = require('express-ejs-layouts');
 app.use(expressLayouts);
 
 app.set('layout','./layouts/defaut/index')
-const tarefaController = require('./controllers/tarefaController'); 
+const consultaController = require('./controllers/consultaController'); 
 const usuarioController = require('./controllers/usuarioController'); 
 /*const loginRouter = require('./login');
 const indexRouter = require('./index');
 const usersRouter = require('./users');*/
 
-const port = 5000; 
+const port = 3344; 
 
 app.set('view engine', 'ejs'); 
 app.use(express.static("public"));
@@ -21,7 +21,7 @@ app.set('layout','./layouts/default/index');
 app.use(express.urlencoded({ extended: true })); 
 
 //ROTA
-app.get('/',(req,res)=>{res.send('<h1 style="color:#f98;">Tarefas</h1>')});
+app.get('/',(req,res)=>{res.send('<h1 style="color:#f98;">Consultas</h1>')});
 
 app.get('/login',(req, res)=>{
     app.set('layout', './layouts/default/login');
@@ -32,21 +32,21 @@ app.post('/login',(res,req)=>{
     usuarioController.autenticar(req, res);
 })
 
-app.get('/tarefas', tarefaController.getTarefas); 
-//app.get('/tarefas:query', tarefaController.getTarefas);
-app.post('/tarefas', tarefaController.addTarefa); 
-//app.delete('/tarefa',tarefaController.deleteTarefa);
-// app.put('/tarefa',tarefaController.updateTarefa);
-// app.get('/tarefa/edit',tarefaController.editTarefa);
-// app.get('/tarefa',tarefaController.searchTarefa);
+app.get('/consultas', consultaController.getConsulta); 
+//app.get('/consultas:query', consultaController.getConsultas);
+app.post('/consultas', consultaController.addConsulta); 
+//app.delete('/consulta',consultaController.deleteConsulta);
+// app.put('/consulta',consultaController.updateConsulta);
+// app.get('/consulta/edit',consultaController.editConsulta);
+// app.get('/consulta',consultaController.searchConsulta);
 
-app.get('/tarefas/:id/editar', tarefaController.getTarefaById);
+app.get('/consultas/:id/editar', consultaController.getConsultaById);
 
-app.post('/tarefas/:id/editar', tarefaController.updateTarefa);
+app.post('/consultas/:id/editar', consultaController.updateConsulta);
 
-app.post('/tarefas/:id/excluir', tarefaController.deleteTarefa);
+app.post('/consultas/:id/excluir', consultaController.deleteConsulta);
 
-app.post('/tarefas/:id/atualizar-status', tarefaController.updateStatusTarefa);
+app.post('/consultas/:id/atualizar-status', consultaController.updateStatusConsulta);
 
 //app.use('/login',loginRouter);
 //app.use('/users',usersRouter);

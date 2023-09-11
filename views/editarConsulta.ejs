@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Editar Consulta</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Editar Consulta</h1>
+        <form action="/consultas/<%= consultas.id %>/editar" method="POST">
+            <div class="mb-3">
+                <label for="dataConsulta" class="form-label">Nova data da Consulta:</label>
+                <input type="date" id="data_consulta" name="data_consulta" value="<%= consultas.data_consulta %>"
+                    class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="nomePaciente" class="form-label">Nome do paciente:</label>
+                <input type="text" id="nome_paciente" name="nome_paciente" value="<%= consultas.nome_paciente %>"
+                    class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="diagnostico" class="form-label">Diagnóstico:</label>
+                <textarea id="diagnostico" name="diagnostico" class="form-control"
+                    required><%= consultas.diagnostico %></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="prescricaoMedicamentos" class="form-label">Prescrição Médica:</label>
+                <textarea id="prescricao_medicamentos" name="prescricao_medicamentos" class="form-control"
+                    required><%= consultas.prescricao_medicamentos %></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+    </div>
+</body>
+<script>
+    function formatarData(data) {
+        const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+        return new Date(data).toLocaleDateString(undefined, options);
+    }
+</script>
+</html>

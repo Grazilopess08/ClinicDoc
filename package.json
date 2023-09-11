@@ -1,7 +1,7 @@
 {
-  "name": "tarefas",
+  "name": "consultas",
   "version": "1.0.0",
-  "description": "Controle de tarefas",
+  "description": "Agendamento de consultas",
   "main": "start.js",
   "scripts": {
     "start": "nodemon index.js",
@@ -10,7 +10,7 @@
   "keywords": [
     "mvc",
     "aula",
-    "tarefas",
+    "consultas",
     "node",
     "express",
     "ejs"
